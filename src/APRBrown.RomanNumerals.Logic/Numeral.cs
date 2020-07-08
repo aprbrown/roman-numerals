@@ -4,14 +4,25 @@ namespace APRBrown.RomanNumerals.Logic
 
     public class Numeral
     {
-        private char r_value;
+        private char[] r_value;
 
         private int a_value;
 
-        public char RomanValue
+        public string RomanValue
         {
-            get => r_value;
-            private set => r_value = value;
+            get
+            {
+                string r_value = "";
+                foreach (var r in r_value)
+                {
+                    r_value += r;
+                }
+                return r_value;
+            }
+            private set
+            {
+                r_value = value.ToCharArray();
+            }
         }
 
         public int ArabicValue
@@ -25,7 +36,7 @@ namespace APRBrown.RomanNumerals.Logic
             romanNumeral = Char.ToUpper(romanNumeral);
             if (ValidateNumeral(romanNumeral))
             {
-                this.RomanValue = romanNumeral;
+                this.RomanValue = romanNumeral.ToString();
                 int arabicNumeral;
                 GetNumeralValue(romanNumeral, out arabicNumeral);
                 this.ArabicValue = arabicNumeral;
