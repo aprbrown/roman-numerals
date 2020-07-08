@@ -4,14 +4,11 @@ Inspired by a comment by [Zac Braddy](https://twitter.com/ZackerTheHacker) on ep
 
 ## Contents ##
 
-- [Introduction](#Introduction)
-  - [Background](#Background)
-  - [Goals](#Goals)
+- [Background](#Background)
+- [Goals](#Goals)
 - [License](#License)
 
-## Introduction ##
-
-### Background ###
+## Background ##
 
 [Roman numerals](https://en.wikipedia.org/wiki/Roman_numerals) can be difficult to decipher compared to Arabic numeral notation. Though roman numerals are rarely used, they are still seen on plaques and monuments, and even in the credit sequences of films and television shows. This project will allow the user to enter a Roman numeral and return the value in Arabic numerals.
 
@@ -31,7 +28,13 @@ Each power of 10 digit in a number is represented by between one and four Roman 
 
 Some numbers introduce subtractive notation to the numeral system. Where 1 = I, 2 = II and 3 = III, 4 is not noted as IIII, but instead noted as IV (one less than five).
 
-### Goals ###
+### Restrictions ###
+
+The number zero (0) is not represented in Roman Numerals.
+
+The range of available numbers to display in Roman Numerals is between 1 and 3999. This is due to M being the largest number and the nature of subtractive notation. To reach 4000 there would need to be a symbol representing 5000.
+
+## Goals ##
 
 A user should be able to enter a roman number such as MDCCCXXVII and see the parsed value of 1827.
 
