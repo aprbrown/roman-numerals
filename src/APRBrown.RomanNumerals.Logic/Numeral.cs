@@ -4,25 +4,33 @@ namespace APRBrown.RomanNumerals.Logic
 
     public class Numeral
     {
-        private char rValue;
-        private int aValue;
+        private char r_value;
+
+        private int a_value;
+
         public char RomanValue
         {
-            get => rValue;
-            private set
-            {
-                var val = Char.ToUpper(value);
-                if (ValidateNumeral(val))
-                    rValue = val;
-            }
+            get => r_value;
+            private set => r_value = value;
         }
+
         public int ArabicValue
         {
-            get => aValue;
-            private set
+            get => a_value;
+            private set => a_value = value;
+        }
+
+        public Numeral(char romanNumeral)
+        {
+            romanNumeral = Char.ToUpper(romanNumeral);
+            if (ValidateNumeral(romanNumeral))
             {
-                aValue = value;
+                this.RomanValue = romanNumeral;
+                int arabicNumeral;
+                GetNumeralValue(romanNumeral, out arabicNumeral);
+                this.ArabicValue = arabicNumeral;
             }
+            else throw new ArgumentException("Not a valid Roman Numeral");
         }
 
         private bool ValidateNumeral(char n)
@@ -37,19 +45,6 @@ namespace APRBrown.RomanNumerals.Logic
                 n == 'M'
             ) return true;
             else return false;
-        }
-
-        public Numeral(char romanNumeral)
-        {
-            var r_val = Char.ToUpper(romanNumeral);
-            int a_val;
-            if (ValidateNumeral(r_val))
-            {
-                this.RomanValue = r_val;
-                GetNumeralValue(r_val, out a_val);
-                this.ArabicValue = a_val;
-            }
-            else throw new ArgumentException("Not a valid Roman Numeral");
         }
 
         private void GetNumeralValue(char numeral, out int arabic)

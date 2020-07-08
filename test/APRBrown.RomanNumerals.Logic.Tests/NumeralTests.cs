@@ -3,7 +3,7 @@ namespace APRBrown.RomanNumerals.Logic.Tests
     using System;
     using Xunit;
 
-    public class NumeralsTests
+    public class NumeralTests
     {
         [Fact]
         public void Numeral_I_Has_A_Value_Of_1()
@@ -144,6 +144,20 @@ namespace APRBrown.RomanNumerals.Logic.Tests
 
             //Then
             Assert.Equal(expectedChar, actualChar);
+            Assert.Equal(expectedInt, actualInt);
+        }
+
+        [Fact]
+        public void Passing_Numerals_As_A_String_Gives_Correct_Value()
+        {
+            //Given
+            var sut = new Numeral("XXII");
+            int expectedInt = 22;
+
+            //When
+            int actualInt = sut.ArabicValue;
+
+            //Then
             Assert.Equal(expectedInt, actualInt);
         }
     }
