@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\APRBrown.RomanNumerals.Logic\APRBrown.RomanNumerals.Logic.csproj" />
+    <ProjectReference Include="..\..\src\RomanNumerals.Logic\RomanNumerals.Logic.csproj" />
   </ItemGroup>
 
 </Project>
