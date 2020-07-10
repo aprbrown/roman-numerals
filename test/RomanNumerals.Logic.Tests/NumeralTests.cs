@@ -193,5 +193,67 @@ namespace RomanNumerals.Logic.Tests
             Assert.Throws<ArgumentException>(() => new Numeral("IXIX"));
             Assert.Throws<ArgumentException>(() => new Numeral("IVIV"));
         }
+
+        [Fact]
+        public void A_numeral_cannot_be_below_1_or_above_3999()
+        {
+            Assert.Throws<ArgumentException>(() => new Numeral(0));
+            Assert.Throws<ArgumentException>(() => new Numeral(-1));
+            Assert.Throws<ArgumentException>(() => new Numeral(-1345));
+            Assert.Throws<ArgumentException>(() => new Numeral(4000));
+            Assert.Throws<ArgumentException>(() => new Numeral(5235));
+        }
+
+        [Fact]
+        public void A_Numeral_Can_Be_Built_with_thousands()
+        {
+            //Given
+            var sut = new Numeral(3000);
+
+            //When
+            var expected = "MMM";
+
+            //Then
+            Assert.Equal(expected, sut.RomanValue);
+        }
+
+        [Fact]
+        public void A_Numeral_Can_Be_Built_with_Hundreds()
+        {
+            //Given
+            var sut = new Numeral(1400);
+
+            //When
+            var expected = "MCD";
+
+            //Then
+            Assert.Equal(expected, sut.RomanValue);
+        }
+
+        [Fact]
+        public void A_Numeral_Can_Be_Built_with_Tens()
+        {
+            //Given
+            var sut = new Numeral(2790);
+
+            //When
+            var expected = "MMDCCXC";
+
+            //Then
+            Assert.Equal(expected, sut.RomanValue);
+        }
+
+        [Fact]
+        public void A_Numeral_Can_Be_Built_with_Ones()
+        {
+            //Given
+            var sut = new Numeral(683);
+
+            //When
+            var expected = "DCLXXXIII";
+
+            //Then
+            Assert.Equal(expected, sut.RomanValue);
+        }
     }
 }

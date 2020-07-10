@@ -9,6 +9,17 @@ namespace RomanNumerals.Logic
 
         private int a_value;
 
+        private Dictionary<char, int> numeralValueDict = new Dictionary<char, int>
+        {
+           { 'I', 1 },
+           { 'V', 5 },
+           { 'X', 10 },
+           { 'L', 50 },
+           { 'C', 100 },
+           { 'D', 500 },
+           { 'M', 1000 }
+        };
+
         public string RomanValue
         {
             get => new String(r_value);
@@ -24,10 +35,10 @@ namespace RomanNumerals.Logic
         public Numeral(char numeralSymbol)
         {
             numeralSymbol = Char.ToUpper(numeralSymbol);
-            if (ValidateSymbol(numeralSymbol))
+            if (numeralValueDict.ContainsKey(numeralSymbol))
             {
                 this.RomanValue = numeralSymbol.ToString();
-                int arabicNumeral = GetValue(numeralSymbol);
+                numeralValueDict.TryGetValue(numeralSymbol, out int arabicNumeral);
                 this.ArabicValue = arabicNumeral;
             }
             else throw new ArgumentException("Not a valid Roman Numeral", numeralSymbol.ToString());
@@ -40,17 +51,17 @@ namespace RomanNumerals.Logic
             int totalValue = 0;
             bool valid = true;
 
-            foreach (var c in sequence) if (!ValidateSymbol(c)) valid = false;
+            foreach (var c in sequence) if (!numeralValueDict.ContainsKey(c)) valid = false;
             if (!Validate(sequence)) valid = false;
 
             if (valid)
             {
                 for (int i = 0; i < sequence.Length; i++)
                 {
-                    int val = GetValue(sequence[i]);
+                    numeralValueDict.TryGetValue(sequence[i], out int val);
                     if (i < sequence.Length - 1)
                     {
-                        int nextVal = GetValue(sequence[i + 1]);
+                        numeralValueDict.TryGetValue(sequence[i + 1], out int nextVal);
                         if (val < nextVal)
                         {
                             totalValue += (nextVal - val);
@@ -66,6 +77,65 @@ namespace RomanNumerals.Logic
             else throw new ArgumentException("Not a valid Roman Numeral", numeralSymbols);
         }
 
+        public Numeral(int value)
+        {
+            if (value < 1 || value > 3999) throw new ArgumentException(
+                "A Roman Numeral can only be between the values of 1 and 3999",
+                value.ToString());
+
+            string numeral = "";
+            int thousands, hundreds, tens, ones;
+
+            thousands = value / 1000;
+            hundreds = value % 1000 / 100;
+            tens = value % 100 / 10;
+            ones = value % 10;
+
+            for (int i = 0; i < thousands; i++)
+            {
+                numeral += "M";
+            }
+
+            string hundredsSymbols = "";
+
+            for (int i = 0; i < hundreds; i++)
+            {
+                if (i == 3) { hundredsSymbols = "CD"; continue; }
+                if (i == 4) { hundredsSymbols = "D"; continue; }
+                if (i == 8) { hundredsSymbols = "CM"; continue; }
+                hundredsSymbols += "C";
+            }
+
+            numeral += hundredsSymbols;
+
+            string tensSymbols = "";
+
+            for (int i = 0; i < tens; i++)
+            {
+                if (i == 3) { tensSymbols = "XL"; continue; }
+                if (i == 4) { tensSymbols = "L"; continue; }
+                if (i == 8) { tensSymbols = "XC"; continue; }
+                tensSymbols += "X";
+            }
+
+            numeral += tensSymbols;
+
+            string onesSymbols = "";
+
+            for (int i = 0; i < ones; i++)
+            {
+                if (i == 3) { onesSymbols = "IV"; continue; }
+                if (i == 4) { onesSymbols = "V"; continue; }
+                if (i == 8) { onesSymbols = "IX"; continue; }
+                onesSymbols += "I";
+            }
+
+            numeral += onesSymbols;
+
+            this.RomanValue = numeral;
+            this.ArabicValue = value;
+        }
+
         private bool Validate(char[] seq)
         {
             if (seq.Length > 1)
@@ -75,8 +145,8 @@ namespace RomanNumerals.Logic
 
                 for (int i = 0; i < seq.Length - 1; i++)
                 {
-                    int currentValue = GetValue(seq[i]);
-                    int nextValue = GetValue(seq[i + 1]);
+                    numeralValueDict.TryGetValue(seq[i], out int currentValue);
+                    numeralValueDict.TryGetValue(seq[i + 1], out int nextValue);
 
                     if (currentValue != nextValue) repeatCount = 0;
 
@@ -107,51 +177,13 @@ namespace RomanNumerals.Logic
 
                     if (currentValue < nextValue) return false;
 
-                    if (currentValue == nextValue)
-                    {
-                        if (currentValue % 4 == 0 ||
-                            currentValue % 9 == 0) return false;
-                    }
+                    if (currentValue == nextValue &&
+                        (currentValue % 4 == 0 ||
+                        currentValue % 9 == 0)
+                    ) return false;
                 }
             }
             return true;
-        }
-
-        private bool ValidateSymbol(char n)
-        {
-            if (
-                n == 'I' ||
-                n == 'V' ||
-                n == 'X' ||
-                n == 'L' ||
-                n == 'C' ||
-                n == 'D' ||
-                n == 'M'
-            ) return true;
-            else return false;
-        }
-
-        private int GetValue(char numeral)
-        {
-            switch (Char.ToUpper(numeral))
-            {
-                case 'I':
-                    return 1;
-                case 'V':
-                    return 5;
-                case 'X':
-                    return 10;
-                case 'L':
-                    return 50;
-                case 'C':
-                    return 100;
-                case 'D':
-                    return 500;
-                case 'M':
-                    return 1000;
-                default:
-                    return 0;
-            }
         }
     }
 }
