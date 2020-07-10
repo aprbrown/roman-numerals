@@ -51,17 +51,26 @@ namespace RomanNumerals.Logic
             int totalValue = 0;
             bool valid = true;
 
-            foreach (var c in sequence) if (!numeralValueDict.ContainsKey(c)) valid = false;
+            foreach (var c in sequence)
+            {
+                if (!numeralValueDict.ContainsKey(c))
+                {
+                    valid = false;
+                }
+            }
+
             if (!Validate(sequence)) valid = false;
 
             if (valid)
             {
                 for (int i = 0; i < sequence.Length; i++)
                 {
-                    numeralValueDict.TryGetValue(sequence[i], out int val);
+                    int val;
+                    numeralValueDict.TryGetValue(sequence[i], out val);
                     if (i < sequence.Length - 1)
                     {
-                        numeralValueDict.TryGetValue(sequence[i + 1], out int nextVal);
+                        int nextVal;
+                        numeralValueDict.TryGetValue(sequence[i + 1], out nextVal);
                         if (val < nextVal)
                         {
                             totalValue += (nextVal - val);
@@ -142,6 +151,7 @@ namespace RomanNumerals.Logic
             {
                 var values = new List<int>();
                 int repeatCount = 0;
+                int[] invalidRepeats = { 4, 9, 40, 90, 400, 900 };
 
                 for (int i = 0; i < seq.Length - 1; i++)
                 {
@@ -178,9 +188,8 @@ namespace RomanNumerals.Logic
                     if (currentValue < nextValue) return false;
 
                     if (currentValue == nextValue &&
-                        (currentValue % 4 == 0 ||
-                        currentValue % 9 == 0)
-                    ) return false;
+                        Array.Exists(invalidRepeats, e => e.Equals(currentValue))
+                        ) return false;
                 }
             }
             return true;

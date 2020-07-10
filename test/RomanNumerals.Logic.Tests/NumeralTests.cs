@@ -176,6 +176,16 @@ namespace RomanNumerals.Logic.Tests
         }
 
         [Fact]
+        public void Creating_Valid_Numerals_Does_Not_Throw_Exceptions()
+        {
+            var sut = new Numeral("MM");
+            sut = new Numeral("II");
+            sut = new Numeral("XIX");
+            sut = new Numeral("MMMCLII");
+            sut = new Numeral("CCI");
+        }
+
+        [Fact]
         public void An_Incorrectly_Ordered_Numeral_Throws_An_Exception()
         {
             Assert.Throws<ArgumentException>(() => new Numeral("MCCCIVXL"));

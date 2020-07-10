@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{0EBCCD96-9
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RomanNumerals.Logic.Tests", "test\RomanNumerals.Logic.Tests\RomanNumerals.Logic.Tests.csproj", "{276E4688-0AEB-4930-BCE6-D36894237759}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RomanNumerals.ConsoleApp", "src\RomanNumerals.ConsoleApp\RomanNumerals.ConsoleApp.csproj", "{0393E71D-316C-4489-9562-0AB6598F1AAA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,6 +50,18 @@ Global
 		{276E4688-0AEB-4930-BCE6-D36894237759}.Release|x64.Build.0 = Release|Any CPU
 		{276E4688-0AEB-4930-BCE6-D36894237759}.Release|x86.ActiveCfg = Release|Any CPU
 		{276E4688-0AEB-4930-BCE6-D36894237759}.Release|x86.Build.0 = Release|Any CPU
+		{0393E71D-316C-4489-9562-0AB6598F1AAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0393E71D-316C-4489-9562-0AB6598F1AAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0393E71D-316C-4489-9562-0AB6598F1AAA}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0393E71D-316C-4489-9562-0AB6598F1AAA}.Debug|x64.Build.0 = Debug|Any CPU
+		{0393E71D-316C-4489-9562-0AB6598F1AAA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{0393E71D-316C-4489-9562-0AB6598F1AAA}.Debug|x86.Build.0 = Debug|Any CPU
+		{0393E71D-316C-4489-9562-0AB6598F1AAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0393E71D-316C-4489-9562-0AB6598F1AAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0393E71D-316C-4489-9562-0AB6598F1AAA}.Release|x64.ActiveCfg = Release|Any CPU
+		{0393E71D-316C-4489-9562-0AB6598F1AAA}.Release|x64.Build.0 = Release|Any CPU
+		{0393E71D-316C-4489-9562-0AB6598F1AAA}.Release|x86.ActiveCfg = Release|Any CPU
+		{0393E71D-316C-4489-9562-0AB6598F1AAA}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{07FCCA68-3DC4-443A-A366-5D3C0B81E653} = {49E65140-DCBB-45AC-BB23-33526061E569}
