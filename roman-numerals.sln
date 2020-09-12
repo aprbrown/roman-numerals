@@ -1,17 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26124.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{49E65140-DCBB-45AC-BB23-33526061E569}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RomanNumerals.Logic", "src\RomanNumerals.Logic\RomanNumerals.Logic.csproj", "{07FCCA68-3DC4-443A-A366-5D3C0B81E653}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RomanNumerals.Logic", "src\RomanNumerals.Logic\RomanNumerals.Logic.csproj", "{07FCCA68-3DC4-443A-A366-5D3C0B81E653}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{0EBCCD96-9CA9-400A-BFBA-1A1FBAC47C06}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RomanNumerals.Logic.Tests", "test\RomanNumerals.Logic.Tests\RomanNumerals.Logic.Tests.csproj", "{276E4688-0AEB-4930-BCE6-D36894237759}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RomanNumerals.Logic.Tests", "test\RomanNumerals.Logic.Tests\RomanNumerals.Logic.Tests.csproj", "{276E4688-0AEB-4930-BCE6-D36894237759}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RomanNumerals.ConsoleApp", "src\RomanNumerals.ConsoleApp\RomanNumerals.ConsoleApp.csproj", "{0393E71D-316C-4489-9562-0AB6598F1AAA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RomanNumerals.ConsoleApp", "src\RomanNumerals.ConsoleApp\RomanNumerals.ConsoleApp.csproj", "{0393E71D-316C-4489-9562-0AB6598F1AAA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +21,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{07FCCA68-3DC4-443A-A366-5D3C0B81E653}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -63,8 +60,15 @@ Global
 		{0393E71D-316C-4489-9562-0AB6598F1AAA}.Release|x86.ActiveCfg = Release|Any CPU
 		{0393E71D-316C-4489-9562-0AB6598F1AAA}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{07FCCA68-3DC4-443A-A366-5D3C0B81E653} = {49E65140-DCBB-45AC-BB23-33526061E569}
 		{276E4688-0AEB-4930-BCE6-D36894237759} = {0EBCCD96-9CA9-400A-BFBA-1A1FBAC47C06}
+		{0393E71D-316C-4489-9562-0AB6598F1AAA} = {49E65140-DCBB-45AC-BB23-33526061E569}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {67CDC2CD-41B7-4C9E-AF18-B51109D9DF79}
 	EndGlobalSection
 EndGlobal
